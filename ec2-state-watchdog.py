@@ -1,6 +1,5 @@
 # Get EC2 Instance state changes with date and server name
 # Sends SNS notification
-# Fehmi-10/20
 
 import json
 import boto3
