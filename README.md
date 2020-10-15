@@ -1,1 +1,1 @@
-# ec2-status-change
+# AWS Lambda Function for monitoring EC2 Instance State Chnages
