@@ -36,8 +36,8 @@ def lambda_handler(event, context):
                     if item['Key'] == 'Name':
                         vInstanceName=item['Value']
             except KeyError as e:
-                    print(f' Instance {vInstanceId} has NO tags ')
-                    vInstanceName="Null"
+                    print(f' Instance {vInstanceId} has NO Name tag ')
+                    vInstanceName="NoNameTag"
     
     vMessage="Instance: " +  vInstanceName + " / " + vInstanceId + " inside account: " + vAccountName +  " now in new state: " + vInstanceState.upper() + " Time: " + str(vNow)
     
