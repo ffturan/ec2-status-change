@@ -4,10 +4,10 @@ It is possible to configure a CloudWatch rule for EC2 instance state changes and
 
 That's why I prefer getting that SNS nitification through AWS Lambda function, so we can get the actual server name.  
 ## Requirements
-Lambda function will need IAM role with
-	- arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
-	- arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess
-	- Custom SNS publish policy for target SNS topic 
+Lambda function will need IAM role with  
+	- arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole  
+	- arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess  
+	- Custom SNS publish policy for target SNS topic   
 ## Output
 ```shell
 Sample SNS message:
