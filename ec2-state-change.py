@@ -1,5 +1,4 @@
-# Get EC2 Instance state changes with date and server name
-# Sends SNS notification
+# Get SNS notification for EC2 instance state changes with local time info.
 
 import json
 import boto3
@@ -8,6 +7,8 @@ import os
 
 #
 vAccountName="ABC"
+vSNSTopic='arn:aws:sns:us-east-1:111111111111:ops-alert'
+vLocalTimeZone='US/Eastern'
 #
 
 def lambda_handler(event, context):
@@ -19,7 +20,7 @@ def lambda_handler(event, context):
     worker_ec2 = boto3.client('ec2')
     
     #Fix local time
-    os.environ['TZ'] = 'US/Eastern'
+    os.environ['TZ'] = vLocalTimeZone
     time.tzset()
     # Info that we need to know
     vNow=time.strftime('%X %x %z')
@@ -42,7 +43,7 @@ def lambda_handler(event, context):
     
     # Publish a simple message to the specified SNS topic
     response = worker_sns.publish(
-        TopicArn='arn:aws:sns:us-east-1:111111111111:ops-alert',
+        TopicArn=vSNSTopic,
         Subject='EC2 State Change',
         Message=vMessage,    
     )
